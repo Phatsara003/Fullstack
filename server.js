@@ -120,6 +120,46 @@ app.post('/product/update',function(req,res){
         
     })
 });
+//Update user 
+app.post('/user/update',function(req,res){
+    var id = req.body.id;
+    var title = req.body.title;
+    var price = req.body.price;
+    var sql =`update users set title = '${title}',price='${price}' where id = '${id}'` ;
+    db.any(sql)
+    .then(function(data){
+        console.log('DATA:'+data);
+      res.redirect('/users')
+        
+    })
+    .catch(function(error){
+        console.log('ERROR:'+error);
+        
+    })
+});
+
+//add prpduct 
+app.get('/addnew',function(req,res){
+    res.render('pages/addnewproduct');
+
+})
+    var id = req.body.id;
+    var title = req.body.title;
+    var price = req.body.price;
+    var sql =`add products set title = '${title}',price='${price}' where id = '${id}'` ;
+    db.any(sql)
+    .then(function(data){
+        console.log('DATA:'+data);
+      res.redirect('/products')
+        
+    })
+    .catch(function(error){
+        console.log('ERROR:'+error);
+        
+    
+});
+
+
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
 console.log('App is running on http://localhost:' + port);
