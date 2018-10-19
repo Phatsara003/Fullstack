@@ -18,14 +18,7 @@
             <td><%= product.price %></td>
             <td><a  class="btn btn-danger" href="/products/<%=product.id%>" role="button">Edit</a></td>
         </tr>
-    <% }); %>
-        
-        
-    </tbody>
-
-    <tbody>
-    <%products.forEach(function(product){ %>
-<tr>
+        <tr>
             <td scope="row"><%= product.id %></td>
             <td><%= product.title %></td>
             <td><%= product.price %></td>
@@ -35,6 +28,8 @@
         
         
     </tbody>
+
+    
 </table>
 
  
