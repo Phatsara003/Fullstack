@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<form action="/products/update" method="post">
+<form action="/product/update" method="post">
 <div class="jumbotron">
 <div class="form-group">
   <label for="">ID</label>
@@ -24,8 +24,8 @@
 
   <div class="form-group">
     <label for="">Create At</label>
-    <input type="text"
-      class="form-control" value="<%=time%>" name="create" id="" aria-describedby="helpId" placeholder="">
+    <input type="number"
+      class="form-control" value="<%=product.create%>" name="create" id="" aria-describedby="helpId" placeholder="">
     <small id="helpId" class="form-text text-muted">Product create</small>
   </div>
 
