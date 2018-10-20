@@ -177,7 +177,7 @@ app.post('/users/user_add', function (req,res) {
     var sql = `INSERT INTO users (id, email, password)
     VALUES ('${id}', '${email}', '${password}')`;
     //db.none
-    console.log('UPDATE:' + sql);
+    // console.log('UPDATE:' + sql);
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
