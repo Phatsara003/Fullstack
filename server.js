@@ -160,9 +160,9 @@ app.post('/user/update', function (req, res) {
 
 //add product 
 app.get('/addproduct', function (req, res) {
-    res.render('pages/addnewproduct');
+    res.render('pages/addproduct');
 })
-app.post('/addnewproduct', function (req, res) {
+app.post('/addproduct', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
