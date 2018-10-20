@@ -123,6 +123,8 @@ app.post('/product/update',function(req,res){
 });
 
 
+
+
 //add product 
 app.get('/addproduct', function (req, res) {
     res.render('pages/addproduct');
