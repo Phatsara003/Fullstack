@@ -47,7 +47,7 @@ app.get('/products', function (req, res) {
 
 });
 
-app.get('/products/:pid', function (req, res) {
+app.get('/product/:pid', function (req, res) {
  var pid = req.params.pid;
  var sql ="select * from products where id = "+ pid;
         
@@ -103,7 +103,7 @@ app.get('/users', function (req, res) {
 
 });
 
-//Update productedit 
+
 //update product
 app.post('/product/update',function(req,res){
     var id = req.body.id;
