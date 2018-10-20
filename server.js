@@ -121,42 +121,7 @@ app.post('/products/update',function(req,res){
         
     })
 });
-//update user
-app.get('/users/:id', function (req, res) {
 
-    var id = req.params.id;
-    var sql = 'select * from users';
-    if (id) {
-        sql += ' where id =' + id;
-    }
-    db.any(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.render('pages/users', { users: data })
-
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-});
-
-//Update useredit
-app.post('/user/update', function (req, res) {
-    var id = req.body.id;
-    var email = req.body.email;
-    var password = req.body.password;
-
-    var sql = `update users set email = '${email}', password = '${password}' where id = '${id}' `;
-    db.none(sql);
-    db.any(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.redirect('/users');
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-});
 
 //add product 
 app.get('/addproduct', function (req, res) {
