@@ -105,7 +105,7 @@ app.get('/users', function (req, res) {
 
 //Update productedit 
 //update product
-app.post('/products/update',function(req,res){
+app.post('/product/update',function(req,res){
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
