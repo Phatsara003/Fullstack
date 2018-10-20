@@ -46,8 +46,8 @@ app.get('/products', function (req, res) {
     })
 
 });
-
-app.get('/product/:pid', function (req, res) {
+//productpid
+app.get('/products/:pid', function (req, res) {
  var pid = req.params.pid;
  var sql ="select * from products where id = "+ pid;
         
@@ -63,7 +63,7 @@ app.get('/product/:pid', function (req, res) {
     })
 });
 
-
+//userpid
 app.get('/users/:id', function (req, res) {
     var id = req.params.id;
     var sql = 'select * from users';
