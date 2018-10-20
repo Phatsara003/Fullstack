@@ -149,6 +149,23 @@ app.post('/products/product_add', function (req, res) {
 
 })
 
+//delete product 
+app.get('/product_delete/:id', function (req,res) {
+    var id = req.params.id;
+    var sql = 'DELETE FROM products';
+    if (id) {
+        sql += ' where id =' + id;
+    }
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/products');
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+});
 
 
 var port = process.env.PORT || 8080;
