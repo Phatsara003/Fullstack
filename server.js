@@ -162,7 +162,7 @@ app.post('/user/update', function (req, res) {
 app.get('/newproduct', function (req, res) {
     res.render('pages/addnewproduct');
 })
-app.post('/addnewproduct', function (req, res) {
+app.post('/addproduct', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
