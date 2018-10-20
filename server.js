@@ -103,7 +103,7 @@ app.get('/users', function (req, res) {
 
 });
 
-//Update data 
+//Update productedit 
 //update product
 app.post('/product/update',function(req,res){
     var id = req.body.id;
@@ -140,22 +140,22 @@ app.get('/users/:id', function (req, res) {
         })
 });
 
-//Update user 
-app.post('/user/update',function(req,res){
+//Update useredit
+app.post('/user/update', function (req, res) {
     var id = req.body.id;
-    var title = req.body.title;
-    var price = req.body.price;
-    var sql =`update users set title = '${title}',price='${price}' where id = '${id}'` ;
+    var email = req.body.email;
+    var password = req.body.password;
+
+    var sql = `update users set email = '${email}', password = '${password}' where id = '${id}' `;
+    db.none(sql);
     db.any(sql)
-    .then(function(data){
-        console.log('DATA:'+data);
-      res.redirect('/users')
-        
-    })
-    .catch(function(error){
-        console.log('ERROR:'+error);
-        
-    })
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/users');
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
 });
 
 //add prpduct 
