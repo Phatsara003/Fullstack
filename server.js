@@ -63,7 +63,7 @@ app.get('/products/:pid', function (req, res) {
     })
 });
 
-//userpid
+//userid
 app.get('/users/:id', function (req, res) {
     var id = req.params.id;
     var sql ="select * from users where id = "+ id;
@@ -170,7 +170,7 @@ app.post('/products/product_add', function (req, res) {
 app.get('/user_add', function (req,res) {
     res.render('pages/user_add');
 })
-app.post('/products/user_add', function (req, res) {
+app.post('/users/user_add', function (req, res) {
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
