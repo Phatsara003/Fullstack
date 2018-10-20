@@ -14,11 +14,16 @@
             <td scope="row"><%= user.id %></td>
             <td><%= user.email %></td>
             <td><%= user.password %></td>
+            <td><a  class="btn btn-warning" href="/products/<%= product.id%>" role="button">Update</a>
+            
+            <a name="btnConfirm" value="Confirm"  class="btn btn-danger" href="/product_delete/<%= product.id %>" onclick="return confirm('Are you sure you want to delete?')"role="button">DELETE</a></td>
         </tr>
     <% }); %>
         
         
     </tbody>
+
+
 </table>
 <script>
         $(document).ready(function(){
