@@ -159,10 +159,10 @@ app.post('/user/update', function (req, res) {
 });
 
 //add product 
-app.get('/newproduct', function (req, res) {
+app.get('/addproduct', function (req, res) {
     res.render('pages/addnewproduct');
 })
-app.post('/addproduct', function (req, res) {
+app.post('/addnewproduct', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
