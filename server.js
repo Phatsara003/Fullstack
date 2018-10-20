@@ -129,7 +129,7 @@ app.post('/product/update',function(req,res){
 app.get('/addproduct', function (req, res) {
     res.render('pages/addproduct');
 })
-app.post('/addproduct', function (req, res) {
+app.post('/products/addproduct', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
