@@ -122,6 +122,24 @@ app.post('/product/update',function(req,res){
     })
 });
 
+//update user
+app.post('/user/update',function(req,res){
+    var id = req.body.id;
+    var email = req.body.email;
+    var password = req.body.password;
+    var sql =`update users set password = '${password}',email='${email}' where id = '${id}'` ;
+    db.any(sql)
+    .then(function(data){
+        console.log('DATA:'+data);
+      res.redirect('/users')
+        
+    })
+    .catch(function(error){
+        console.log('ERROR:'+error);
+        
+    })
+});
+
 
 
 
@@ -149,6 +167,31 @@ app.post('/products/product_add', function (req, res) {
 
 })
 
+
+//add user 
+app.get('/user_add', function (req,res) {
+    res.render('pages/user_add');
+})
+app.post('/products/user_add', function (req, res) {
+    var id = req.body.id;
+    var email = req.body.email;
+    var password = req.body.password;
+    var sql = `INSERT INTO users (id, email, password)
+    VALUES ('${id}', '${email}', '${password}')`;
+    //db.none
+    console.log('UPDATE:' + sql);
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/users')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+})
+
 //delete product 
 app.get('/product_delete/:id', function (req,res) {
     var id = req.params.id;
@@ -160,6 +203,24 @@ app.get('/product_delete/:id', function (req,res) {
         .then(function (data) {
             console.log('DATA:' + data);
             res.redirect('/products');
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+});
+
+//delete user
+app.get('/user_delete/:id', function (req,res) {
+    var id = req.params.id;
+    var sql = 'DELETE FROM users';
+    if (id) {
+        sql += ' where id =' + id;
+    }
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/users');
 
         })
         .catch(function (error) {
