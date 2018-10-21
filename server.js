@@ -6,7 +6,8 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
-
+var moment = require('moment');
+moment().format();
 
 //app.get('/test', function (request, respone) {
 //  //  respone.send('<H1>test</H1>');
@@ -143,7 +144,9 @@ app.post('/user/update',function(req,res){
 
 //add product 
 app.get('/product_add', function (req,res) {
-    res.render('pages/product_add');
+   
+    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    res.render('pages/add_product', { time: time});
 })
 app.post('/products/product_add', function (req, res) {
     var id = req.body.id;
