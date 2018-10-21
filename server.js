@@ -189,7 +189,8 @@ app.post('/products/product_add', function (req, res) {
 
 //add user 
 app.get('/user_add', function (req,res) {
-    res.render('pages/user_add');
+    var times = moment().format('MMMM Do YYYY, h:mm:ss a');
+    res.render('pages/user_add' , { time: times});
 })
 app.post('/users/user_add', function (req,res) {
     var id = req.body.id;
