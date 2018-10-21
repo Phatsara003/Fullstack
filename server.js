@@ -70,7 +70,7 @@ app.get('/products', function (req, res) {
     if (id) {
         sql += ' where product =' + id + ' ORDER BY  product_id ASC';
     }
-    db.any(sql + ' ORDER BY  product_id ASC')
+    db.any(sql + ' ORDER BY product_id ASC')
         .then(function (data) {
             console.log('DATA:' + data);
             response.render('pages/products', { products: data });
@@ -129,7 +129,7 @@ app.post('/product/update',function(req,res){
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql =`update products set title = '${title}',price='${price}' where  product_id = '${id}'` ;
+    var sql =`update products set title = '${title}',price='${price}' where product_id = '${id}'` ;
     db.any(sql)
     .then(function(data){
         console.log('DATA:'+data);
@@ -222,7 +222,7 @@ app.get('/product_delete/:id', function (req,res) {
     var id = req.params.id;
     var sql = 'DELETE FROM products';
     if (id) {
-        sql += ' where  product_id =' + id;
+        sql += ' where product_id =' + id;
     }
     db.any(sql)
         .then(function (data) {
@@ -258,7 +258,7 @@ app.get('/product_report', function (req, res) {
     var id = req.param('id');
     var sql = 'select* from products ORDER BY Price ASC limit 5';
     if (id) {
-        sql += ' where  product_id =' + id;
+        sql += ' where product =' + id;
     }
     db.any(sql)
         .then(function (data) {
