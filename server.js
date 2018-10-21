@@ -172,7 +172,7 @@ app.post('/products/product_add', function (req, res) {
     var price = req.body.price;
     var time = req.body.time;
     var sql = `INSERT INTO products (id, title, price, created_at)
-    VALUES ('${id}', '${title}', '${price}')`;
+    VALUES ('${id}', '${title}', '${price}', '${time}')`;
     //db.none
     console.log('UPDATE:' + sql);
     db.any(sql)
@@ -191,7 +191,7 @@ app.post('/products/product_add', function (req, res) {
 //add user 
 app.get('/user_add', function (req,res) {
     var time = moment().format();
-    res.render('pages/user_add', { time : time});
+    res.render('pages/user_add', { time : time });
 })
 app.post('/users/user_add', function (req,res) {
     var id = req.body.id;
