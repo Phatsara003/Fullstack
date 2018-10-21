@@ -245,19 +245,19 @@ app.get('/product_report', function (req, res) {
 });
 
 //reprotuser
-app.get('/user_report', function (req, res) {
-    db.any('select * from users ORDER BY  email ASC', )
-        .then(function (data) {
-            console.log('DATA' + data);
-            res.render('pages/user_report', { users: data })
-
+app.get('/user_report', function(req, res) {
+    var sql='select purchases.users_id,purchases.name,users.email,sum(purchase_items.price) as price from purchases inner join users on users.users_id=purchases.users_id inner join purchase_items on purchase_items.purchase_id=purchases.purchase_id group by purchases.users_id,purchases.name,users.email order by sum(purchase_items.price) desc LIMIT 15;'
+    db.any(sql)
+        .then(function (data) 
+        {
+            //f
+            // console.log('DATA' + data);
+            res.render('pages/Report_users', { users : data });
         })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
+        .catch(function (data) 
+        {
+            console.log('ERROR' + error);
         })
-
-
-
 });
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
