@@ -83,6 +83,8 @@ app.get('/products', function (req, res) {
 
 });
 
+
+
 //userid
 app.get('/users/:id', function (req, res) {
     var id = req.params.id;
@@ -251,7 +253,40 @@ app.get('/user_delete/:id', function (req,res) {
         })
 });
 
+//reportpro
+app.get('/product_report', function (req, res) {
+    var id = req.param('id');
+    var sql = 'select* from products ORDER BY Price DESC limit 10';
+    if (id) {
+        sql += ' where id =' + id;
+    }
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.render('pages/product_report', { products: data })
 
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+});
+
+//reprotuser
+app.get('/user_report', function (req, res) {
+    db.any('select * from users ORDER BY  email ASC', )
+        .then(function (data) {
+            console.log('DATA' + data);
+            res.render('pages/user_report', { users: data })
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+
+
+});
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
 console.log('App is running on http://localhost:' + port);
