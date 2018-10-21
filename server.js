@@ -22,7 +22,7 @@ app.get('/', function (req, res) {
  app.get('/about', function (req, res) {
      var name = 'Phatsara Ruangrat.';
      var id = '590213003';
-     var major ='Softwaer Engineering';
+     var major ='Software Engineering';
     res.render('pages/about',{ fullname : name , id : id,major : major });
 });
 
