@@ -226,23 +226,21 @@ app.get('/user_delete/:id', function (req,res) {
 });
 
 //reportpro
-app.get('/product_report', function (req, res) {
-    var id = req.param('id');
-    var sql = 'select* from products ORDER BY Price ASC limit 5';
-    if (id) {
-        sql += ' where product =' + id;
-    }
-    db.any(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.render('pages/product_report', { products: data })
-
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-
+app.get('/product_report', function(req, res) {
+    var sql ='select products.product_id,products.title,sum(purchase_items.quantity) as quantity,sum(purchase_items.price) as price from products inner join purchase_items on purchase_items.product_id=products.product_id group by products.product_id;select sum(quantity) as squantity,sum(price) as sprice from purchase_items';
+    db.multi(sql)
+    .then(function  (data) 
+    {
+ 
+        // console.log('DATA' + data);
+        res.render('pages/product_report', { products: data[0],sum: data[1]});
+    })
+    .catch(function (data) 
+    {
+        console.log('ERROR' + error);
+    })
 });
+
 
 //reprotuser
 app.get('/user_report', function(req, res) {
