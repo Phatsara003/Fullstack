@@ -49,7 +49,7 @@ app.get('/products', function (req, res) {
 //productpid
 app.get('/products/:pid', function (req, res) {
  var pid = req.params.pid;
- var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+ var times = moment().format('MMMM Do YYYY, h:mm:ss a');
  var sql ="select * from products where id = "+ pid;
         
     db.any(sql)
