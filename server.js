@@ -146,7 +146,7 @@ app.post('/user/update',function(req,res){
 app.get('/product_add', function (req,res) {
    
     var time = moment().format('MMMM Do YYYY, h:mm:ss a');
-    res.render('pages/add_product', { time: time});
+    res.render('pages/product_add', { time: time});
 })
 app.post('/products/product_add', function (req, res) {
     var id = req.body.id;
