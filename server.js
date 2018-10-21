@@ -86,13 +86,13 @@ app.get('/products', function (req, res) {
 //userid
 app.get('/users/:id', function (req, res) {
     var id = req.params.id;
-    
+    var times = moment().format('MMMM Do YYYY, h:mm:ss a');
     var sql ="select * from users where id = "+ id;
            
        db.any(sql)
        .then(function(data){
            console.log('DATA:'+data);
-           res.render('pages/user_edit',{user:data[0]})
+           res.render('pages/user_edit',{user:data[0],time:times})
            
        })
        .catch(function(error){
