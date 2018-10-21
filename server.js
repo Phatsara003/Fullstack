@@ -250,8 +250,7 @@ app.get('/user_report', function(req, res) {
     db.any(sql)
         .then(function (data) 
         {
-            //f
-            // console.log('DATA' + data);
+           
             res.render('pages/user_report', { users : data });
         })
         .catch(function (data) 
