@@ -8,17 +8,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var moment = require('moment');
 moment().format();
 
-//app.get('/test', function (request, respone) {
-//  //  respone.send('<H1>test</H1>');
-//});
-
-//app.use(express.static('static'));
 app.set('view engine','ejs'); //??? ejs ???????????
 
 app.get('/', function (req, res) {
      res.render('pages/index');
  });
-
+//about
  app.get('/about', function (req, res) {
      var name = 'Phatsara Ruangrat.';
      var id = '590213003';
@@ -26,26 +21,7 @@ app.get('/', function (req, res) {
     res.render('pages/about',{ fullname : name , id : id,major : major });
 });
 
-// app.get('/products', function (req, res) {
-//     //res.download('./static/index.html');
-//     //res.redirect('/about'); var pgp =require('pg-promise');
-//     var id = req.param('id');
-//     var sql = 'select * from products';
-//     if (id) {
-//         sql += ' where id ='+id+' order by id ASC';
-//         }
-//     db.any(sql+' order by id ASC')
-//     .then(function(data){
-//         console.log('DATA:'+data);
-//         res.render('pages/products',{products:data})
-        
-//     })
-//     .catch(function(error){
-//         console.log('ERROR:'+error);
-        
-//     })
 
-// });
 //productpid
 app.get('/products/:pid', function (req, res) {
  var pid = req.params.pid;
@@ -63,7 +39,7 @@ app.get('/products/:pid', function (req, res) {
         
     })
 });
-
+//product
 app.get('/products', function (req, res) {
     var id = req.param('id');
     var sql = 'select * from products';
