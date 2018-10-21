@@ -163,15 +163,16 @@ app.post('/user/update',function(req,res){
 
 //add product 
 app.get('/product_add', function (req,res) {
-    var times = moment().format('MMMM Do YYYY, h:mm:ss a');
+    var times = moment().format();
     res.render('pages/product_add', { time: times});
 })
 app.post('/products/product_add', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `INSERT INTO products (id, title, price)
-    VALUES ('${id}', '${title}', '${price}')`;
+    var time = req.body.time;
+    var sql = `INSERT INTO products (id, title, price, created_at)
+    VALUES ('${id}', '${title}', '${price}', '${time}')`;
     //db.none
     console.log('UPDATE:' + sql);
     db.any(sql)
