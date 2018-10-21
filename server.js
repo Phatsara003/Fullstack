@@ -256,7 +256,7 @@ app.get('/user_delete/:id', function (req,res) {
 //reportpro
 app.get('/product_report', function (req, res) {
     var id = req.param('id');
-    var sql = 'select* from products ORDER BY Price DESC limit 10';
+    var sql = 'select* from products ORDER BY Price ASC limit 10';
     if (id) {
         sql += ' where id =' + id;
     }
