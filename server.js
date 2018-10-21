@@ -15,7 +15,7 @@ moment().format();
 //app.use(express.static('static'));
 app.set('view engine','ejs'); //??? ejs ???????????
 
-app.get('/index', function (req, res) {
+app.get('/', function (req, res) {
      res.render('pages/index');
  });
 
