@@ -163,8 +163,8 @@ app.post('/user/update',function(req,res){
 
 //add product 
 app.get('/product_add', function (req,res) {
-    var times = moment().format();
-    res.render('pages/product_add', { time: times});
+    var time = moment().format();
+    res.render('pages/product_add', { time: time});
 })
 app.post('/products/product_add', function (req, res) {
     var id = req.body.id;
