@@ -64,7 +64,7 @@ app.get('/products/:pid', function (req, res) {
     })
 });
 
-app.get('/products', function (request, response) {
+app.get('/products', function (req, res) {
     var id = request.param('id');
     var sql = 'select * from products';
     if (id) {
