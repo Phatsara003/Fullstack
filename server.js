@@ -125,8 +125,7 @@ app.post('/user/update',function(req,res){
     var password = req.body.password;
     var sql =`update users set password = '${password}',email='${email}' where users_id = '${id}'` ;
     db.any(sql)
-    .then(function(data){
-        //console.log('DATA:'+data);
+    .then(function(data){   
       res.redirect('/users')
         
     })
@@ -135,8 +134,6 @@ app.post('/user/update',function(req,res){
         
     })
 });
-
-
 
 
 //add product 
@@ -156,7 +153,6 @@ app.post('/products/product_add', function (req, res) {
     console.log('UPDATE:' + sql);
     db.any(sql)
         .then(function (data) {
-            console.log('DATA:' + data);
             res.redirect('/products')
 
         })
