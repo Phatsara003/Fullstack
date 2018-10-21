@@ -65,7 +65,7 @@ app.get('/products/:pid', function (req, res) {
 });
 
 app.get('/products', function (req, res) {
-    var id = request.param('id');
+    var id = req.param('id');
     var sql = 'select * from products';
     if (id) {
         sql += ' where products =' + id + ' ORDER BY product_id ASC';
@@ -73,7 +73,7 @@ app.get('/products', function (req, res) {
     db.any(sql + ' ORDER BY product_id ASC')
         .then(function (data) {
             console.log('DATA:' + data);
-            response.render('pages/products', { products: data });
+            res.render('pages/products', { products: data });
 
         })
         .catch(function (data) {
