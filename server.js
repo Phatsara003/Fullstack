@@ -26,26 +26,26 @@ app.get('/', function (req, res) {
     res.render('pages/about',{ fullname : name , id : id,major : major });
 });
 
-app.get('/products', function (req, res) {
-    //res.download('./static/index.html');
-    //res.redirect('/about'); var pgp =require('pg-promise');
-    var id = req.param('id');
-    var sql = 'select * from products';
-    if (id) {
-        sql += ' where id ='+id+' order by id ASC';
-        }
-    db.any(sql+' order by id ASC')
-    .then(function(data){
-        console.log('DATA:'+data);
-        res.render('pages/products',{products:data})
+// app.get('/products', function (req, res) {
+//     //res.download('./static/index.html');
+//     //res.redirect('/about'); var pgp =require('pg-promise');
+//     var id = req.param('id');
+//     var sql = 'select * from products';
+//     if (id) {
+//         sql += ' where id ='+id+' order by id ASC';
+//         }
+//     db.any(sql+' order by id ASC')
+//     .then(function(data){
+//         console.log('DATA:'+data);
+//         res.render('pages/products',{products:data})
         
-    })
-    .catch(function(error){
-        console.log('ERROR:'+error);
+//     })
+//     .catch(function(error){
+//         console.log('ERROR:'+error);
         
-    })
+//     })
 
-});
+// });
 //productpid
 app.get('/products/:pid', function (req, res) {
  var pid = req.params.pid;
