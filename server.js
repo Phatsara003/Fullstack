@@ -56,7 +56,7 @@ app.get('/products/:pid', function (req, res) {
     db.any(sql)
     .then(function(data){
         console.log('DATA:'+data);
-        res.render('pages/product_edit',{product:data[0],time:times})
+        res.render('pages/product_edit',{product:data[0],time: times})
         
     })
     .catch(function(error){
