@@ -21,9 +21,9 @@ app.get('/', function (req, res) {
 
  app.get('/about', function (req, res) {
      var name = 'Phatsara Ruangrat.';
-     var hobbies = ['Music','Movie','Programming'];
-     var bdate ='10/07/1997';
-    res.render('pages/about',{ fullname : name , hobbies : hobbies,bdate : bdate });
+     var id = '590213003';
+     var major ='Softwaer Engineering';
+    res.render('pages/about',{ fullname : name , id : id,major : major });
 });
 
 app.get('/products', function (req, res) {
