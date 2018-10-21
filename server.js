@@ -50,7 +50,7 @@ app.get('/products', function (req, res) {
 app.get('/products/:pid', function (req, res) {
  var pid = req.params.pid;
  var times = moment().format('MMMM Do YYYY, h:mm:ss a');
- var sql ="select * from products where id = "+ pid;
+ var sql ="select * from products where product_id = "+ pid;
         
     db.any(sql)
     .then(function(data){
@@ -68,9 +68,9 @@ app.get('/products', function (req, res) {
     var id = request.param('id');
     var sql = 'select * from products';
     if (id) {
-        sql += ' where id =' + id + ' ORDER BY id ASC';
+        sql += ' where id =' + id + ' ORDER BY  product_id ASC';
     }
-    db.any(sql + ' ORDER BY id ASC')
+    db.any(sql + ' ORDER BY  product_id ASC')
         .then(function (data) {
             console.log('DATA:' + data);
             response.render('pages/products', { products: data });
@@ -129,7 +129,7 @@ app.post('/product/update',function(req,res){
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql =`update products set title = '${title}',price='${price}' where id = '${id}'` ;
+    var sql =`update products set title = '${title}',price='${price}' where  product_id = '${id}'` ;
     db.any(sql)
     .then(function(data){
         console.log('DATA:'+data);
@@ -173,7 +173,7 @@ app.post('/products/product_add', function (req, res) {
     var title = req.body.title;
     var price = req.body.price;
     var time = req.body.time;
-    var sql = `INSERT INTO products (id, title, price, created_at)
+    var sql = `INSERT INTO products (product_id, title, price, created_at)
     VALUES ('${id}', '${title}', '${price}', '${time}')`;
    
     //db.none
@@ -222,7 +222,7 @@ app.get('/product_delete/:id', function (req,res) {
     var id = req.params.id;
     var sql = 'DELETE FROM products';
     if (id) {
-        sql += ' where id =' + id;
+        sql += ' where  product_id =' + id;
     }
     db.any(sql)
         .then(function (data) {
@@ -258,7 +258,7 @@ app.get('/product_report', function (req, res) {
     var id = req.param('id');
     var sql = 'select* from products ORDER BY Price ASC limit 5';
     if (id) {
-        sql += ' where id =' + id;
+        sql += ' where  product_id =' + id;
     }
     db.any(sql)
         .then(function (data) {
