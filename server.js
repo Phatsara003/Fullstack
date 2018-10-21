@@ -126,7 +126,7 @@ app.post('/user/update',function(req,res){
     var sql =`update users set password = '${password}',email='${email}' where users_id = '${id}'` ;
     db.any(sql)
     .then(function(data){
-        console.log('DATA:'+data);
+        //console.log('DATA:'+data);
       res.redirect('/users')
         
     })
