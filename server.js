@@ -5,7 +5,6 @@ var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
-
 var moment = require('moment');
 moment().format();
 
@@ -56,7 +55,7 @@ app.get('/products/:pid', function (req, res) {
     db.any(sql)
     .then(function(data){
         console.log('DATA:'+data);
-        res.render('pages/product_edit',{product:data[0],time: times})
+        res.render('pages/product_edit',{product:data[0], time: times})
         
     })
     .catch(function(error){
@@ -68,6 +67,7 @@ app.get('/products/:pid', function (req, res) {
 //userid
 app.get('/users/:id', function (req, res) {
     var id = req.params.id;
+    
     var sql ="select * from users where id = "+ id;
            
        db.any(sql)
@@ -146,7 +146,7 @@ app.post('/user/update',function(req,res){
 //add product 
 app.get('/product_add', function (req,res) {
    
-    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    
     res.render('pages/product_add', { time: time});
 })
 app.post('/products/product_add', function (req, res) {
