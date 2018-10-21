@@ -102,16 +102,15 @@ app.get('/users/:id', function (req, res) {
    });
 //user
 app.get('/users', function (req, res) {
-    //res.download('./static/index.html');
-    //res.redirect('/about'); var pgp =require('pg-promise');
+
     var id = req.param('id');
     var sql = 'select * from users';
     if (id) {
-        sql += ' where id ='+id;
-        }
-    db.any(sql)
-    .then(function(data){
-        console.log('DATA:'+data);
+        sql += ' where id =' + id + ' ORDER BY id ASC';
+    }
+    db.any(sql + ' ORDER BY id ASC')
+        .then(function (data) {
+            console.log('DATA:' + data);
         res.render('pages/users',{users:data})
         
     })
