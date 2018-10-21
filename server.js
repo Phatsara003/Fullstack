@@ -89,7 +89,7 @@ app.get('/products', function (req, res) {
 app.get('/users/:id', function (req, res) {
     var id = req.params.id;
     var times = moment().format('MMMM Do YYYY, h:mm:ss a');
-    var sql ="select * from users where id = "+ id;
+    var sql ="select * from users where users_id = "+ id;
            
        db.any(sql)
        .then(function(data){
@@ -108,9 +108,9 @@ app.get('/users', function (req, res) {
     var id = req.param('id');
     var sql = 'select * from users';
     if (id) {
-        sql += ' where id =' + id + ' ORDER BY id ASC';
+        sql += ' where users =' + id + ' ORDER BY users_id ASC';
     }
-    db.any(sql + ' ORDER BY id ASC')
+    db.any(sql + ' ORDER BY users_id ASC')
         .then(function (data) {
             console.log('DATA:' + data);
         res.render('pages/users',{users:data})
@@ -147,7 +147,7 @@ app.post('/user/update',function(req,res){
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
-    var sql =`update users set password = '${password}',email='${email}' where id = '${id}'` ;
+    var sql =`update users set password = '${password}',email='${email}' where users_id = '${id}'` ;
     db.any(sql)
     .then(function(data){
         console.log('DATA:'+data);
@@ -201,7 +201,7 @@ app.post('/users/user_add', function (req,res) {
     var email = req.body.email;
     var password = req.body.password;
     var time = req.body.time;
-    var sql = `INSERT INTO users (id, email, password, created_at)
+    var sql = `INSERT INTO users (users_id, email, password, created_at)
     VALUES ('${id}', '${email}', '${password}', '${time}')`;
     //db.none
     // console.log('UPDATE:' + sql);
@@ -240,7 +240,7 @@ app.get('/user_delete/:id', function (req,res) {
     var id = req.params.id;
     var sql = 'DELETE FROM users';
     if (id) {
-        sql += ' where id =' + id;
+        sql += ' where users_id =' + id;
     }
     db.any(sql)
         .then(function (data) {
