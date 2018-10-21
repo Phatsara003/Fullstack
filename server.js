@@ -245,12 +245,12 @@ app.get('/product_report', function (req, res) {
 });
 
 //reprotuser
-app.get('/users_report', function(req, res) {
+app.get('/user_report', function(req, res) {
     var sql='select purchases.users_id,purchases.name,users.email,sum(purchase_items.price) as price from purchases inner join users on users.users_id=purchases.users_id inner join purchase_items on purchase_items.purchase_id=purchases.purchase_id group by purchases.users_id,purchases.name,users.email order by sum(purchase_items.price) desc LIMIT 15;'
     db.any(sql)
         .then(function (data)  {
          console.log('DATA:' + data); 
-         res.render('pages/users_report', { users : data });
+         res.render('pages/user_report', { users : data });
         })
         .catch(function (data) {
         console.log('ERROR' + error);
