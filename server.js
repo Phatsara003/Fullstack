@@ -9,17 +9,18 @@ var moment = require('moment');
 moment().format();
 
 app.set('view engine','ejs'); //??? ejs ???????????
-
+//start
 app.get('/', function (req, res) {
     res.render('pages/index');
 });
+//index
 app.get('/index', function (req, res) {
      res.render('pages/index');
  });
 //about
  app.get('/about', function (req, res) {
      var name = 'Phatsara Ruangrat.';
-     var id = '590213003';
+     var id = '5930213003';
      var major ='Software Engineering';
     res.render('pages/about',{ fullname : name , id : id,major : major });
 });
@@ -33,7 +34,6 @@ app.get('/products/:pid', function (req, res) {
         
     db.any(sql)
     .then(function(data){
-        //console.log('DATA:'+data);
         res.render('pages/product_edit',{product:data[0], time: times})
         
     })
@@ -61,8 +61,6 @@ app.get('/products', function (req, res) {
         })
 
 });
-
-
 
 //userid
 app.get('/users/:id', function (req, res) {
