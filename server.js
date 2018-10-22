@@ -10,7 +10,7 @@ moment().format();
 
 app.set('view engine','ejs'); //??? ejs ???????????
 
-app.get('/', function (req, res) {
+app.get('/index', function (req, res) {
      res.render('pages/index');
  });
 //about
